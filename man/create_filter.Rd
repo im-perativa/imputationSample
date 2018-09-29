@@ -16,5 +16,5 @@ Filter yang dapat digunakan untuk memfilter data dalam fungsi \code{\link{imputa
 Membuat filter yang diinginkan.
 }
 \examples{
-filter_list = create_filter(mpg > 15, gear == 4, between(hp, 100, 110))
+filter_list = create_filter(NAMA_PROV == "ACEH", KLASIFIKASI == "1", JenisKegiatan != 2)
 }

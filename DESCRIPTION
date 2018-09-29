@@ -4,9 +4,9 @@ Version: 0.0.0.9000
 Authors@R: person("Muhammad", "Luqman", email = "14.8261@stis.ac.id",
                   role = c("aut", "cre"))
 Description: Package untuk Memilih Sampel Imputasi
-Depends: R (>= 3.1.2), foreign
+Depends: R (>= 3.1.2), foreign, dplyr, haven (>= 1.1.2)
 License: MIT
 Encoding: UTF-8
-Imports: dplyr, magrittr
+Imports: magrittr
 LazyData: true
 RoxygenNote: 6.1.0

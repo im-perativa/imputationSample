@@ -24,7 +24,8 @@ Filter yang dapat digunakan untuk memfilter data dalam fungsi \code{\link{imputa
 Memilih sampel imputasi dari filter yang telah dibuat.
 }
 \examples{
-filter_list = create_filter(mpg > 15, gear == 4, between(hp, 100, 110))
-imputation_sample(x = mtcars, filters = filter_list, size = 4)
-imputation_sample(x = mtcars, filters = filter_list, size = 4, weight_col = disp, flag = "sampelku")
+filter_1 = create_filter(NAMA_PROV == "ACEH", KLASIFIKASI == 1)
+filter_2 = create_filter(NAMA_PROV == "RIAU", KLASIFIKASI == 2)
+imputation_sample(x = sakernas_dummy, filters = filter_1, size = 4, flag = "aceh_1")
+imputation_sample(x = sakernas_dummy, filters = filter_2, size = 10, weight_col = Weight_R, flag = "riau_2_weighted")
 }

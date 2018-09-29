@@ -9,18 +9,28 @@
 #' @param flag Identitas dari sampel yang dihasilkan
 #' @return Filter yang dapat digunakan untuk memfilter data dalam fungsi \code{\link{imputation_sample}}.
 #' @examples
-#' filter_list = create_filter(mpg > 15, gear == 4, between(hp, 100, 110))
-#' imputation_sample(x = mtcars, filters = filter_list, size = 4)
-#' imputation_sample(x = mtcars, filters = filter_list, size = 4, weight_col = disp, flag = "sampelku")
+#' filter_1 = create_filter(NAMA_PROV == "ACEH", KLASIFIKASI == 1)
+#' filter_2 = create_filter(NAMA_PROV == "RIAU", KLASIFIKASI == 2)
+#' imputation_sample(x = sakernas_dummy, filters = filter_1, size = 4, flag = "aceh_1")
+#' imputation_sample(x = sakernas_dummy, filters = filter_2, size = 10, weight_col = Weight_R, flag = "riau_2_weighted")
 #' @export
 imputation_sample <- function(x, filters, size, weight_col = NULL, flag = 1) {
   weight_col <- dplyr::enquo(weight_col)
-  original <- x
+
+  if (!"temp_id" %in% colnames(x)) {
+    x$temp_id <- 1:nrow(x)
+  }
+
+  if (!"flag" %in% colnames(x)) {
+    x$flag <- NA
+  }
+
   filtered <- x %>%
     dplyr::filter(!!!filters) %>%
     dplyr::sample_n(size, weight = !!weight_col) %>%
-    dplyr::mutate(flag = flag)
+    select(temp_id)
 
-  result <- dplyr::left_join(original, filtered)
-  return(result)
+  x[filtered$temp_id, "flag"] <- flag
+  x$temp_id <- NULL
+  return(x)
 }
