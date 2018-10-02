@@ -2,18 +2,18 @@
 % Please edit documentation in R/create_filter.R
 \name{create_filter}
 \alias{create_filter}
-\title{Membuat filter yang diinginkan.}
+\title{Membuat filter yang diinginkan}
 \usage{
 create_filter(...)
 }
 \arguments{
-\item{...}{Daftar filter yang diinginkan.}
+\item{...}{Daftar filter yang diinginkan (dapat dibuat sebanyak mungkin).}
 }
 \value{
 Filter yang dapat digunakan untuk memfilter data dalam fungsi \code{\link{imputation_sample}}.
 }
 \description{
-Membuat filter yang diinginkan.
+Membuat filter yang diinginkan
 }
 \examples{
 filter_list = create_filter(NAMA_PROV == "ACEH", KLASIFIKASI == "1", JenisKegiatan != 2)

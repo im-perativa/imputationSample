@@ -2,16 +2,16 @@
 % Please edit documentation in R/imputation_sample.R
 \name{imputation_sample}
 \alias{imputation_sample}
-\title{Memilih sampel imputasi dari filter yang telah dibuat.}
+\title{Memilih sampel imputasi}
 \usage{
-imputation_sample(x, filters, size, weight_col = NULL, flag = 1)
+imputation_sample(x, filters, weight_aggregate, weight_col, flag = 1)
 }
 \arguments{
 \item{x}{Dataset yang digunakan.}
 
 \item{filters}{Filter yang telah dibuat dengan fungsi \code{\link{create_filter}}.}
 
-\item{size}{Besaran sampel yang diinginkan.}
+\item{weight_aggregate}{Besaran agregat weight dari sampel terpilih yang diinginkan.}
 
 \item{weight_col}{Kolom yang digunakan sebagai weight dalam pemilihan sampel apabila tersedia.}
 
@@ -21,11 +21,11 @@ imputation_sample(x, filters, size, weight_col = NULL, flag = 1)
 Filter yang dapat digunakan untuk memfilter data dalam fungsi \code{\link{imputation_sample}}.
 }
 \description{
-Memilih sampel imputasi dari filter yang telah dibuat.
+Memilih sampel imputasi dari filter yang telah dibuat dengan total weight tertentu
 }
 \examples{
 filter_1 = create_filter(NAMA_PROV == "ACEH", KLASIFIKASI == 1)
 filter_2 = create_filter(NAMA_PROV == "RIAU", KLASIFIKASI == 2)
-imputation_sample(x = sakernas_dummy, filters = filter_1, size = 4, flag = "aceh_1")
-imputation_sample(x = sakernas_dummy, filters = filter_2, size = 10, weight_col = Weight_R, flag = "riau_2_weighted")
+imputation_sample(x = sakernas_dummy, filters = filter_1, weight_aggregate = 10000, flag = "aceh_1")
+imputation_sample(x = sakernas_dummy, filters = filter_2, weight_aggregate = 5000, weight_col = Weight_R, flag = "riau_2")
 }
