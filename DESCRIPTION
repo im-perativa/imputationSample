@@ -1,6 +1,6 @@
 Package: imputationSample
 Title: Package untuk Memilih Sampel Imputasi
-Version: 0.0.0.9000
+Version: 0.1.1.0000
 Authors@R: person("Muhammad", "Luqman", email = "14.8261@stis.ac.id",
                   role = c("aut", "cre"))
 Description: Package untuk Memilih Sampel Imputasi

@@ -2,6 +2,4 @@
 
 export(create_filter)
 export(imputation_sample)
-import(dplyr)
-import(foreign)
-import(magrittr)
+export(mutate_sample)

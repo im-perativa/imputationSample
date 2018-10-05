@@ -5,7 +5,7 @@
 \title{Memilih sampel imputasi}
 \usage{
 imputation_sample(x, filters, weight_aggregate, weight_col, iter = 1,
-  flag = 1)
+  sample_flag = "1")
 }
 \arguments{
 \item{x}{Dataset yang digunakan.}
@@ -18,10 +18,10 @@ imputation_sample(x, filters, weight_aggregate, weight_col, iter = 1,
 
 \item{iter}{Jumlah iterasi pengacakan dan pengambilan sampel yang diinginkan (semakin tinggi maka weight akan semakin sesuai).}
 
-\item{flag}{Identitas dari sampel yang dihasilkan.}
+\item{sample_flag}{Identitas dari sampel yang dihasilkan.}
 }
 \value{
-Filter yang dapat digunakan untuk memfilter data dalam fungsi \code{\link{imputation_sample}}.
+Data yang telah diberi flag untuk sampel terpilih yang selanjutnya dapat diubah atributnya menggunakan fungsi \code{\link{mutate_sample}}.
 }
 \description{
 Memilih sampel imputasi dari filter yang telah dibuat dengan total weight tertentu
@@ -30,8 +30,8 @@ Memilih sampel imputasi dari filter yang telah dibuat dengan total weight terten
 # Membuat filter berbeda
 filter_1 = create_filter(NAMA_PROV == "ACEH", KLASIFIKASI == 1)
 filter_2 = create_filter(NAMA_PROV == "RIAU" | NAMA_PROV == "SUMATERA BARAT", KLASIFIKASI == 2)
-imputation_sample(x = sakernas_dummy, filters = filter_1, weight_aggregate = 10000, weight_col = Weight_R, flag = "aceh_1")
-imputation_sample(x = sakernas_dummy, filters = filter_2, weight_aggregate = 5000, weight_col = Weight_R, flag = "riau_sumbar_2")
+imputation_sample(x = sakernas_dummy, filters = filter_1, weight_aggregate = 10000, weight_col = Weight_R, sample_flag = "aceh_1")
+imputation_sample(x = sakernas_dummy, filters = filter_2, weight_aggregate = 5000, weight_col = Weight_R, sample_flag = "riau_sumbar_2")
 
 # Membandingkan hasil sampel dengan jumlah iterasi berbeda
 my_filter = create_filter(NAMA_PROV == "SUMATERA BARAT", KLASIFIKASI == 2)
