@@ -10,10 +10,12 @@ devtools::install_github("imperativa/imputationSample")
 ```
 
 ## Penggunaan
-Terdapat dua fungsi utama dalam package ini:
+Terdapat tiga fungsi utama dalam package ini:
 * `create_filter()` digunakan untuk membuat filter yang diinginkan
 * `imputation_sample()` digunakan untuk memilih sampel imputasi dari filter yang telah dibuat dengan total weight tertentu
 * `mutate_sample()` digunakan untuk mengubah nilai atribut-atribut tertentu dari sampel yang telah dipilh yang teridentifikasi dengan flag tertentu
+
+Untuk penjelasan lebih detail dari setiap fungsi, lihat dokumentasi fungsi dengan menjalankan syntax `?<nama_fungsi>`
 
 ## Implementasi
 ```r
@@ -52,7 +54,7 @@ sakernas_dummy
 #> #   ...
 
 #> Buat filter untuk memilih sampel acak dari provinsi ACEH atau SUMATERA BARAT dengan klasifikasi Perkotaan 
-my_filter <- create_filter(NAMA_PROV == "ACEH" | NAMA_PROV == "SUMATERA BARAT", KLASIFIKASI == 1)
+my_filter <- create_filter((NAMA_PROV == "ACEH" | NAMA_PROV == "SUMATERA BARAT") & KLASIFIKASI == 1)
 
 #> Memilih sampel acak dari filter yang telah dibuat
 sakernas_dummy <- imputation_sample(x = sakernas_dummy, filters = my_filter, weight_aggregate = 45000, weight_col = Weight_R, iter = 10, flag = "aceh_sumbar_1")
